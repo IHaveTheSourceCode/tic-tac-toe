@@ -1,7 +1,7 @@
 const gameboard = (() => {
   const game_board = [];
 
-  const 
+  //   const
 
   return {
     game_board,
@@ -18,12 +18,11 @@ const player = (marker) => {
     e.target.appendChild(el);
     gameboard.game_board[e.target.dataset.spot] = marker;
     console.log(gameboard.game_board);
-    console.log(gameFlow.pickWinner());
-    gameFlow.checkDraw();
+    gameFlow.pickWinner();
     gameFlow.swapCurrentPlayer();
   };
 
-  const enableDraw = () => {
+  const enableMark = () => {
     grid_cells.forEach((cell) => {
       if (gameboard.game_board[cell.dataset.spot] == undefined) {
         cell.addEventListener("click", place_marker);
@@ -31,12 +30,12 @@ const player = (marker) => {
     });
   };
 
-  const disableDraw = () => {
+  const disableMark = () => {
     grid_cells.forEach((cell) => {
       cell.removeEventListener("click", place_marker);
     });
   };
-  return { enableDraw, disableDraw };
+  return { enableMark, disableMark };
 };
 
 const gameFlow = (() => {
@@ -45,17 +44,17 @@ const gameFlow = (() => {
   let secondPlayerScore = 0;
 
   const startGame = () => {
-    playerX.enableDraw();
+    playerX.enableMark();
   };
 
   const swapCurrentPlayer = () => {
     if (current_player == "X") {
-      playerX.disableDraw();
-      playerO.enableDraw();
+      playerX.disableMark();
+      playerO.enableMark();
       current_player = "O";
     } else {
-      playerO.disableDraw();
-      playerX.enableDraw();
+      playerO.disableMark();
+      playerX.enableMark();
       current_player = "X";
     }
   };
@@ -72,21 +71,22 @@ const gameFlow = (() => {
     let board = gameboard.game_board;
 
     if (board[1] != undefined) {
-      if ((board[2] && board[3]) == board[1]) return board[1];
-      if ((board[5] && board[9]) == board[1]) return board[1];
-      if ((board[4] && board[7]) == board[1]) return board[1];
+      if (board[2] == board[1] && board[3] == board[1]) return board[1];
+      if (board[5] == board[1] && board[9] == board[1]) return board[1];
+      if (board[4] == board[1] && board[7] == board[1]) return board[1];
     }
     if (board[7] != undefined) {
-      if ((board[5] && board[3]) == board[7]) return board[7];
-      if ((board[8] && board[9]) == board[7]) return board[7];
+      if (board[5] == board[7] && board[3] == board[7]) return board[7];
+      if (board[8] == board[7] && board[9] == board[7]) return board[7];
     }
     if (board[5] != undefined) {
-      if ((board[2] && board[8]) == board[5]) return board[5];
-      if ((board[4] && board[6]) == board[5]) return board[5];
+      if (board[2] == board[5] && board[8] == board[5]) return board[5];
+      if (board[4] == board[5] && board[6] == board[5]) return board[5];
     }
     if (board[6] != undefined) {
-      if ((board[3] && board[9]) == board[6]) return board[6];
+      if (board[3] == board[6] && board[9] == board[6]) return board[6];
     }
+    checkDraw();
   };
 
   const checkDraw = () => {
@@ -96,6 +96,7 @@ const gameFlow = (() => {
       }
     }
     // return true;
+    console.log("draw");
     alert("DRAW!");
   };
 

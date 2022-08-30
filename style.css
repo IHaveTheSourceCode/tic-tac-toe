@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap");
+
 * {
   margin: 0;
 }
@@ -11,9 +13,11 @@ body {
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: rgb(22, 16, 45);
+  font-family: "Dongle", sans-serif;
 }
 
 .container {
@@ -42,7 +46,7 @@ body {
 }
 
 .grid-cell:hover {
-  transform: scale(1.05);
+  transform: scale(0.95);
 }
 
 .x-marker,
@@ -58,4 +62,51 @@ body {
 .circle-marker {
   width: 90%;
   height: 90%;
+}
+
+.players {
+  display: flex;
+  justify-content: space-between;
+  width: min(60vw, 450px);
+  margin-bottom: min(5vw, 35px);
+}
+
+.player {
+  height: min(25vw, 180px);
+  width: min(20vw, 140px);
+  background-color: var(--clr-violet-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.801);
+  padding: min(2vw, 60px);
+  border-radius: 25px;
+  border: 5px solid var(--clr-violet-light);
+}
+
+.player:hover {
+  border: 5px solid yellowgreen;
+}
+
+.circle-icon {
+  width: 35%;
+}
+
+.x-icon {
+  width: 30%;
+}
+
+.profile-picture {
+  width: 50%;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 450px) {
+  .container {
+    gap: 10px;
+    padding: 10px;
+  }
 }
