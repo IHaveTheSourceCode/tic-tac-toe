@@ -1,6 +1,7 @@
-// make Gameboard object using a module
 const gameboard = (() => {
   const game_board = [];
+
+  const 
 
   return {
     game_board,
@@ -10,32 +11,32 @@ const gameboard = (() => {
 const player = (marker) => {
   const grid_cells = document.querySelectorAll(".grid-cell");
 
-  const place_marker = (cell) => {
+  const place_marker = (e) => {
     let el = document.createElement("img");
     el.src = `images/${marker}.png`;
     el.classList.add(`${marker}-marker`);
+    e.target.appendChild(el);
+    gameboard.game_board[e.target.dataset.spot] = marker;
+    console.log(gameboard.game_board);
+    console.log(gameFlow.pickWinner());
+    gameFlow.checkDraw();
     gameFlow.swapCurrentPlayer();
-    cell.appendChild(el);
   };
 
   const enableDraw = () => {
     grid_cells.forEach((cell) => {
       if (gameboard.game_board[cell.dataset.spot] == undefined) {
-        cell.addEventListener("click", function () {
-          place_marker(cell);
-          this.removeEventListener("click", arguments.callee);
-        });
-        gameboard.game_board[cell.dataset.spot] = marker;
+        cell.addEventListener("click", place_marker);
       }
     });
   };
 
-  //   const disableDraw = () => {
-  //     grid_cells.forEach((cell) => {
-  //       cell.removeEventListener("click", place_marker);
-  //     });
-  //   };
-  return { enableDraw };
+  const disableDraw = () => {
+    grid_cells.forEach((cell) => {
+      cell.removeEventListener("click", place_marker);
+    });
+  };
+  return { enableDraw, disableDraw };
 };
 
 const gameFlow = (() => {
@@ -48,11 +49,12 @@ const gameFlow = (() => {
   };
 
   const swapCurrentPlayer = () => {
-    console.log("hi");
     if (current_player == "X") {
+      playerX.disableDraw();
       playerO.enableDraw();
       current_player = "O";
     } else {
+      playerO.disableDraw();
       playerX.enableDraw();
       current_player = "X";
     }
@@ -66,7 +68,7 @@ const gameFlow = (() => {
     current_player = "X";
   };
 
-  const checkPositions = () => {
+  const pickWinner = () => {
     let board = gameboard.game_board;
 
     if (board[1] != undefined) {
@@ -87,12 +89,23 @@ const gameFlow = (() => {
     }
   };
 
+  const checkDraw = () => {
+    for (let i = 1; i < 9; i++) {
+      if (gameboard.game_board[i] == undefined) {
+        return;
+      }
+    }
+    // return true;
+    alert("DRAW!");
+  };
+
   return {
     current_player,
     startGame,
     swapCurrentPlayer,
     restartGame,
-    checkPositions,
+    pickWinner,
+    checkDraw,
   };
 })();
 

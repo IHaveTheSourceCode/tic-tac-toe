@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tourney:ital,wght@1,900&display=swap");
+
+:root {
+  --clr-yellow: #ffd032;
+  --clr-red: #eb1550;
+  --gradient-orange: linear-gradient(
+    240deg,
+    rgba(235, 21, 80, 1) 0%,
+    rgba(255, 208, 50, 1) 100%
+  );
+  --gradient-pink: linear-gradient(
+    240deg,
+    rgba(235, 21, 80, 1) 0%,
+    rgba(102, 73, 193, 1) 100%
+  );
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+h1 {
+  font-family: "Tourney", cursive;
+  color: var(--clr-red);
+  font-size: 10rem;
+  line-height: 8.5rem;
+  margin-top: 3rem;
+  text-align: center;
+  text-shadow: 6px 6px var(--clr-yellow);
+  user-select: none;
+}
+
+h1 > p:nth-child(2) {
+  color: var(--clr-yellow);
+  text-shadow: 6px 6px var(--clr-red);
+}
+
+section {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+button {
+  font-family: "Dongle", sans-serif;
+  border-radius: 25px;
+  font-size: 2.5rem;
+  height: 10vh;
+  width: 60vw;
+  max-width: 400px;
+  background: rgb(235, 21, 80);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+button:nth-child(1) {
+  background: var(--gradient-orange);
+}
+
+button:nth-child(2) {
+  background: var(--gradient-pink);
+}
+
+button:nth-child(1):hover {
+  border: 5px solid var(--clr-violet-light);
+}
+
+button:nth-child(2):hover {
+  border: 5px solid var(--clr-yellow);
+}
+
+a {
+  text-decoration: none;
+}
+
+#computer-play-link {
+  color: var(--clr-violet-dark);
+}
+
+#local-play-link {
+  color: var(--clr-yellow);
+  opacity: 0.8;
+}
+
+.author-link {
+  opacity: 0.8;
+  color: var(--clr-yellow);
+  font-size: 1.1rem;
+  position: fixed;
+  bottom: 1px;
+  right: 5px;
+}
+
+.author-link > a {
+  color: var(--clr-violet-light);
+  padding: 2px;
+  transition: all 0.2s;
+}
+
+.author-link > a:hover {
+  color: var(--clr-violet-light);
+  background-color: red;
+  color: var(--clr-yellow);
+}
+
+@media only screen and (max-width: 450px) {
+  h1 {
+    font-size: 6rem;
+    line-height: 5.6rem;
+  }
+
+  section {
+    gap: 40px;
+  }
+
+  button {
+    height: 15vh;
+    line-height: 1.8rem;
+  }
+}
