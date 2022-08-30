@@ -1,10 +1,12 @@
 const gameboard = (() => {
   const game_board = [];
-
-  //   const
+  const players = document.querySelectorAll(".player");
+  const restartButton = document.querySelector(".restart-btn");
 
   return {
     game_board,
+    players,
+    restartButton,
   };
 })();
 
@@ -110,18 +112,21 @@ const gameFlow = (() => {
 })();
 
 const cosmetics = (() => {
-  const players = document.querySelectorAll(".player");
-
   const highlight_current_player = () => {
-    document.querySelectorAll(".player").forEach((player) => {
+    gameboard.players.forEach((player) => {
       player.classList.toggle("highlight-current-player");
     });
   };
 
-  return { players, highlight_current_player };
+  const drawWinningLine = () => {};
+
+  return { highlight_current_player };
 })();
 
 const playerX = player("x");
 const playerO = player("circle");
 
 gameFlow.startGame();
+
+//add restartGame function to btn when game is finished
+//make cosmetic functiont that will glow up the cells
