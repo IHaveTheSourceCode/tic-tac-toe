@@ -19,6 +19,7 @@ const player = (marker) => {
     gameboard.game_board[e.target.dataset.spot] = marker;
     console.log(gameboard.game_board);
     gameFlow.pickWinner();
+    cosmetics.highlight_current_player();
     gameFlow.swapCurrentPlayer();
   };
 
@@ -40,8 +41,6 @@ const player = (marker) => {
 
 const gameFlow = (() => {
   let current_player = "X";
-  let firstPlayerScore = 0;
-  let secondPlayerScore = 0;
 
   const startGame = () => {
     playerX.enableMark();
@@ -108,6 +107,18 @@ const gameFlow = (() => {
     pickWinner,
     checkDraw,
   };
+})();
+
+const cosmetics = (() => {
+  const players = document.querySelectorAll(".player");
+
+  const highlight_current_player = () => {
+    document.querySelectorAll(".player").forEach((player) => {
+      player.classList.toggle("highlight-current-player");
+    });
+  };
+
+  return { players, highlight_current_player };
 })();
 
 const playerX = player("x");

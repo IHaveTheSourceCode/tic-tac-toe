@@ -10,18 +10,31 @@
   </head>
   <body>
     <div class="players">
-      <div class="player">
-        <img class="profile-picture" src="images/shaggy.jpg" />
+      <div class="player highlight-current-player">
+        <img
+          class="profile-picture"
+          src="images/shaggy.jpg"
+          draggable="false"
+        />
         <p class="player-name">Player 1</p>
-        <img class="x-icon" src="images/x.png" />
+        <img class="x-icon" src="images/x.png" draggable="false" />
       </div>
-      <div class="player">
-        <img class="profile-picture" src="images/scooby.jpeg" />
+      <div class="player player--scooby">
+        <img
+          class="profile-picture"
+          src="images/scooby.jpeg"
+          draggable="false"
+        />
         <p class="player-name">Player 2</p>
-        <img class="circle-icon" src="images/circle.png" />
+        <img class="circle-icon" src="images/circle.png" draggable="false" />
       </div>
     </div>
     <div class="container">
+      <div class="overlay">
+        <button class="restart-btn">
+          <img src="images/restart-icon.png" class="restart-icon" />
+        </button>
+      </div>
       <div class="grid-cell" data-spot="1"></div>
       <div class="grid-cell" data-spot="2"></div>
       <div class="grid-cell" data-spot="3"></div>

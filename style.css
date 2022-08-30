@@ -21,10 +21,10 @@ body {
 }
 
 .container {
-  height: 70vw;
-  width: 70vw;
-  max-width: 600px;
-  max-height: 600px;
+  height: 60vw;
+  width: 60vw;
+  max-width: 550px;
+  max-height: 550px;
   background-color: var(--clr-violet-light);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -32,6 +32,7 @@ body {
   gap: 15px;
   padding: 15px;
   border-radius: 20px;
+  position: relative;
 }
 
 .grid-cell {
@@ -67,13 +68,13 @@ body {
 .players {
   display: flex;
   justify-content: space-between;
-  width: min(60vw, 450px);
+  width: min(60vw, 550px);
   margin-bottom: min(5vw, 35px);
 }
 
 .player {
-  height: min(25vw, 180px);
-  width: min(20vw, 140px);
+  height: 150px;
+  width: 100px;
   background-color: var(--clr-violet-dark);
   display: flex;
   flex-direction: column;
@@ -82,21 +83,29 @@ body {
   font-size: 2.6rem;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.801);
-  padding: min(2vw, 60px);
+  padding: 30px;
   border-radius: 25px;
   border: 5px solid var(--clr-violet-light);
+  user-select: none;
+  transition: all 0.4s;
 }
 
-.player:hover {
-  border: 5px solid yellowgreen;
+.player--scooby > p {
+  margin-top: 10px;
+}
+
+.highlight-current-player {
+  border: 5px solid yellowgreen !important;
 }
 
 .circle-icon {
-  width: 35%;
+  width: 60%;
+  position: relative;
+  bottom: 5px;
 }
 
 .x-icon {
-  width: 30%;
+  width: 50%;
 }
 
 .profile-picture {
@@ -104,9 +113,59 @@ body {
   border-radius: 50%;
 }
 
-@media only screen and (max-width: 450px) {
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-image: url("/images/game_score_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: inherit;
+}
+
+.restart-btn {
+  position: absolute;
+  text-align: center;
+  text-justify: center;
+  bottom: -40px;
+  left: 43%;
+  width: 15%;
+  height: 15%;
+  border: none;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    240deg,
+    rgba(235, 21, 80, 1) 0%,
+    rgba(255, 208, 50, 1) 100%
+  );
+  cursor: pointer;
+  border: 3px solid var(--clr-violet-dark);
+}
+
+.restart-icon {
+  width: 70%;
+  margin-top: 5px;
+  transition: all 0.4s;
+}
+
+.restart-icon:hover {
+  transform: rotate(360deg);
+}
+
+@media only screen and (max-width: 650px) {
   .container {
-    gap: 10px;
+    gap: 8px;
+    padding: 8px;
+  }
+  .player {
+    font-size: 1.6rem;
     padding: 10px;
+  }
+
+  .restart-btn {
+    bottom: -20px;
   }
 }
