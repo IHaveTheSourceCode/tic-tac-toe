@@ -5,35 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="start.css" />
+    <script src="script.js" defer></script>
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <h1>
-      <p>TIC</p>
-      <p>TAC</p>
-      <p>TOE</p>
-    </h1>
-    <section>
-      <button>
-        <a href="index.html" id="computer-play-link" draggable="false">
-          VS Computer
-        </a>
-      </button>
-      <button>
-        <a href="index.html" id="local-play-link" draggable="false">
-          Local Multiplayer
-        </a>
-      </button>
-      <p class="author-link">
-        Inspired by design from
-        <a
-          href="https://dribbble.com/shots/6187597-Tic-Tac-Toe"
-          target="_blank"
-        >
-          Shashank Kumar</a
-        >.
-      </p>
-    </section>
+    <div class="players">
+      <div class="player highlight-current-player">
+        <img
+          class="profile-picture"
+          src="images/shaggy.jpg"
+          draggable="false"
+        />
+        <p class="player-name">Player 1</p>
+        <img class="x-icon" src="images/x.png" draggable="false" />
+      </div>
+      <div class="player player--scooby">
+        <img
+          class="profile-picture"
+          src="images/scooby.jpeg"
+          draggable="false"
+        />
+        <p class="player-name">Player 2</p>
+        <img class="circle-icon" src="images/circle.png" draggable="false" />
+      </div>
+    </div>
+    <div class="container">
+      <div class="overlay">
+        <img class="game-end-image" draggable="false" />
+        <p class="game-results"></p>
+        <button class="restart-btn">
+          <img src="images/restart-icon.png" class="restart-icon" />
+        </button>
+      </div>
+      <div class="grid-cell" data-spot="1"></div>
+      <div class="grid-cell" data-spot="2"></div>
+      <div class="grid-cell" data-spot="3"></div>
+      <div class="grid-cell" data-spot="4"></div>
+      <div class="grid-cell" data-spot="5"></div>
+      <div class="grid-cell" data-spot="6"></div>
+      <div class="grid-cell" data-spot="7"></div>
+      <div class="grid-cell" data-spot="8"></div>
+      <div class="grid-cell" data-spot="9"></div>
+    </div>
   </body>
 </html>
