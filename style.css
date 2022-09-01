@@ -121,7 +121,7 @@ body {
   height: 100%;
   top: 0;
   right: 0;
-  background-image: url("../images/game_score_background.jpg");
+  background-image: url("./images/game_score_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -171,7 +171,7 @@ body {
   opacity: 0.8;
   position: relative;
   top: 5%;
-  left: 30%;
+  left: 25%;
 }
 
 .restart-icon {
