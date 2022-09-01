@@ -109,28 +109,40 @@ const gameFlow = (() => {
     checkDraw();
   };
 
+  const stopGame = () =>
+    document.querySelectorAll(".grid-cell").forEach((cell) => {
+      cell.style.pointerEvents = "none";
+    });
+
   const checkDraw = () => {
     for (let i = 1; i < 9; i++) {
       if (gameboard.game_board[i] == undefined) {
         return;
       }
     }
-    return true;
+    stopGame();
+    setTimeout(() => {
+      gameboard.game_results.textContent = "It's a draw!";
+      gameboard.game_end_image.style =
+        'background-image: url("images/draw.jpg")';
+      document.querySelectorAll(".grid-cell").forEach((cell) => {
+        cell.textContent = "";
+        gameboard.overlay.classList.toggle("overlay-display-on");
+      });
+    }, 200);
   };
 
   const endGame = (winning_marker) => {
-    document.querySelectorAll(".grid-cell").forEach((cell) => {
-      cell.style.pointerEvents = "none";
-    });
+    stopGame();
     setTimeout(() => {
       if (winning_marker == "x") {
-        gameboard.game_results.textContent = "You Won!";
+        gameboard.game_results.textContent = "Player 1 Won!";
         gameboard.game_end_image.style =
           'background-image: url("images/squidward-dabbing.jpg")';
       } else if (winning_marker == "circle") {
-        gameboard.game_results.textContent = "You Lost!";
+        gameboard.game_results.textContent = "Player 2 Won!";
         gameboard.game_end_image.style =
-          'background-image: url("images/spongebob-crying.jpg")';
+          'background-image: url("images/squidward-dabbing.jpg")';
       }
       document.querySelectorAll(".grid-cell").forEach((cell) => {
         cell.textContent = "";
