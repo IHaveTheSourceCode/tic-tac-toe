@@ -91,7 +91,8 @@ body {
 }
 
 .player--scooby > p {
-  margin-top: 10px;
+  position: relative;
+  top: 10px;
 }
 
 .highlight-current-player {
@@ -109,7 +110,7 @@ body {
 }
 
 .profile-picture {
-  width: 50%;
+  width: 80%;
   border-radius: 50%;
 }
 
@@ -136,7 +137,7 @@ body {
   text-align: center;
   text-justify: center;
   bottom: -40px;
-  left: 43%;
+  left: 40%;
   width: 15%;
   height: 15%;
   border: none;
@@ -150,10 +151,33 @@ body {
   border: 3px solid var(--clr-violet-dark);
 }
 
+.game-end-image {
+  width: 50%;
+  height: 50%;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  border: 10px solid var(--clr-violet-dark);
+  position: absolute;
+  top: 25%;
+  left: 22%;
+  text-align: center;
+  margin: auto;
+}
+
+.game-results {
+  font-size: 5rem;
+  color: white;
+  opacity: 0.8;
+  position: relative;
+  top: 5%;
+  left: 30%;
+}
+
 .restart-icon {
   width: 70%;
   margin-top: 5px;
-  transition: all 0.4s;
+  transition: all 0.4s ease-out;
 }
 
 .restart-icon:hover {
@@ -171,6 +195,12 @@ body {
   }
 
   .restart-btn {
-    bottom: -20px;
+    bottom: -30px;
+    width: 20%;
+    height: 20%;
+  }
+
+  .game-results {
+    font-size: 3rem;
   }
 }
