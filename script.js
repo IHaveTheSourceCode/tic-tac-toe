@@ -136,6 +136,7 @@ const gameFlow = (() => {
     stopGame();
     setTimeout(() => {
       if (winning_marker == "x") {
+        cosmetics.highlight_current_player();
         gameboard.game_results.textContent = "Player 1 Won!";
         gameboard.game_end_image.style =
           'background-image: url("images/squidward-dabbing.jpg")';
